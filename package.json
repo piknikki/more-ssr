@@ -2,10 +2,16 @@
   "name": "ssr2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node server.js"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Emmanuel Henri",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "next": "^5.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
 }
