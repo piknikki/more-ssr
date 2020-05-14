@@ -7,16 +7,25 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare()
-.then(() => {
-    const server = express();
+    .then(() => {
+        const server = express();
 
-    server.get('*', (req, res) => {
-        return handle(req, res);
-    })
+        // create a route that goes to page 2
+        // don't need this because next does it
+        server.get('/page2', (req, res) => {
+            return app.render(req, res, '/page2');
+        })
 
-    server.listen(port, (err) => {
-        if (err) throw err;
+        server.get('/page3', (req, res) => {
+            return app.render(req, res, '/ohyeah')
+        })
 
-        console.log('Ready on port ${port}');
-    })
-})
+        server.get('*', (req, res) => {
+            return handle(req, res);
+        })
+
+        server.listen(port, (err) => {
+            if (err) throw err;
+            console.log(`Ready on http://localhost:${port}`);
+        })
+    });
